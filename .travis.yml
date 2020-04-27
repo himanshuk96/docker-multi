@@ -7,7 +7,7 @@ services:
 before_install:
   - docker build -t home/react-test -f ./client/Dockerfile.dev ./client
 
-scripts:
+script:
   - docker run home/react-test npm test -- --coverage
 
 after_success:
