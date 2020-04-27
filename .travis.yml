@@ -5,21 +5,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t hk1396/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t home/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run hk1396/react-test npm test -- --coverage
+  - docker run home/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t hk1396/multi-client ./client
-  - docker build -t hk1396/multi-nginx ./nginx
-  - docker build -t hk1396/multi-server ./server
-  - docker build -t hk1396/multi-worker ./worker
+  - docker build -t home/multi-client ./client
+  - docker build -t home/multi-nginx ./nginx
+  - docker build -t home/multi-server ./server
+  - docker build -t home/multi-worker ./worker
   # log in in the  docker CLI
     docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io  
   # echo "$DOCKER_PASSWORD" | docker login docker.io -u "$DOCKER_ID"  --password-stdin
   # take thos images and push them to docker hub
-  - docker push hk1396/multi-client
-  - docker push hk1396/multi-nginx
-  - docker push hk1396/multi-server
-  - docker push hk1396/multi-worker
+  - docker push home/multi-client
+  - docker push home/multi-nginx
+  - docker push home/multi-server
+  - docker push home/multi-worker
