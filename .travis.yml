@@ -15,7 +15,13 @@ after_success:
   - docker build -t home/multi-worker ./worker
   # Log in to the docker CLI
   - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io
+  # tagging
+  - docker tag  home/multi-client
+  - docker tag home/multi-nginx 
+  - docker tag  home/multi-server
+  - docker tag  home/multi-worker
   #take thos images and puh them to docker hub
+  
   - docker push home/multi-client
   - docker push home/multi-nginx
   - docker push home/multi-server
